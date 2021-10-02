@@ -1,0 +1,14 @@
+name: My Action
+description: This is a test
+inputs:
+  project:
+    description: Path to stuff we want to have access to inside this container
+    required: true
+outputs:
+  location:
+    description: Path to stuff this action has touched
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.project }}

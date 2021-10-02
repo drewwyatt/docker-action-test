@@ -1,0 +1,18 @@
+name: CI
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  do-the-thing:
+    name: Do the Thing
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run action
+        uses: ./.github/actions/my-action
+        id: my-action
+        with:
+          project: local
+      - run: echo ${{ steps.my-action.outputs.location }}
