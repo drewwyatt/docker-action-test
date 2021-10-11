@@ -1,3 +1,6 @@
 #!/bin/sh -l
 
-gradle foo
+ls -la
+ls -la local/
+
+realpath local/script.sh
