@@ -4,6 +4,14 @@ inputs:
   project:
     description: Path to stuff we want to have access to inside this container
     required: true
+  release:
+    description: '--release'
+    required: true
+    default: true
+  debug:
+    description: '--debug'
+    required: true
+    default: false
 outputs:
   location:
     description: Path to stuff this action has touched
@@ -11,4 +19,4 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - ${{ inputs.project }}
+    - ${{ inputs.project }} ${{ inputs.release }} ${{ inputs.debug }}

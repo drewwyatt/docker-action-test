@@ -3,6 +3,15 @@ name: CI
 on:
   push:
   workflow_dispatch:
+    inputs:
+      release:
+        description: '--release'
+        required: true
+        default: true
+      debug:
+        description: '--debug'
+        required: true
+        default: false
 
 jobs:
   do-the-thing:
@@ -15,4 +24,6 @@ jobs:
         id: my-action
         with:
           project: local
+          release: ${{ inputs.release }}
+          debug: ${{ inputs.debug }}
       - run: echo ${{ steps.my-action.outputs.location }}
